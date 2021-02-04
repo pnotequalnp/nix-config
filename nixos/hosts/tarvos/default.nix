@@ -4,10 +4,18 @@
   networking.hostName = "tarvos";
   system.stateVersion = "20.03";
 
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ../../profiles
+    ./hardware-configuration.nix
+  ];
 
   profiles = {
-    x11.enable = true;
+    display-server.enable = true;
+  };
+
+  networking = {
+    interfaces.enp0s31f6.useDHCP = true;
+    interfaces.wlp0s20f3.useDHCP = true;
   };
 
   systemd.services.muteLight = {

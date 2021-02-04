@@ -1,0 +1,16 @@
+clear lock
+clear control
+clear mod1
+clear mod4
+clear mod5
+keycode  37 = Alt_L Meta_L Alt_L Meta_L
+keycode  64 = Control_L NoSymbol Control_L
+keycode 108 = Super_L NoSymbol Super_L
+keycode 107 = Control_R NoSymbol Control_R
+keycode 105 = ISO_Level3_Shift NoSymbol ISO_Level3_Shift
+keycode  66 = Escape Escape Escape
+add lock    = Caps_Lock
+add control = Control_L Control_R
+add mod1    = Alt_L     Meta_L
+add mod4    = Super_L Super_R Super_L Hyper_L
+add mod5    = ISO_Level3_Shift Mode_switch

@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.profiles.x11 = {
-    enable = lib.mkEnableOption "X11 Server";
+  options.profiles.display-server = {
+    enable = lib.mkEnableOption "X11 Display Server";
   };
 
-  config = lib.mkIf config.profiles.x11.enable {
+  config = lib.mkIf config.profiles.display-server.enable {
     fonts.fonts = with pkgs; [
       (nerdfonts.override {
         fonts = [ "Iosevka" ];
@@ -17,9 +17,11 @@
       layout = "us";
       libinput = {
         enable = true;
-        naturalScrolling = true;
-        tapping = false;
-        accelProfile = "flat";
+        touchpad = {
+          naturalScrolling = true;
+          tapping = false;
+          accelProfile = "flat";
+        };
       };
 
       config = ''
@@ -40,7 +42,7 @@
         };
       };
 
-      windowManager.i3.enable = true;
+      windowManager.i3.enable = true; # HACK
     };
   };
 }

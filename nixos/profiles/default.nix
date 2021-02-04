@@ -1,6 +1,6 @@
 {
   imports = [
     ./default
-    ./x11
+    ./display-server
   ];
 }
