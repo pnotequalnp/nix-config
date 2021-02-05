@@ -13,16 +13,18 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, chrome-dark }: {
     homeConfigurations = {
       tarvos = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         homeDirectory = /home/kevin;
         username = "kevin";
         configuration = { pkgs, ... }: {
-          nixpkgs.overlays = [];
+          nixpkgs.overlays = [ chrome-dark.overlay ];
           imports = [ ./home/hosts/tarvos.nix ];
         };
       };

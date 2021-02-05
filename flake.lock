@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "chrome-dark": {
+      "locked": {
+        "lastModified": 1612554845,
+        "narHash": "sha256-41Z0AcHdeJB+e17gMXfoJqV0xP5QsIvSmx1Fkey2MV0=",
+        "owner": "pnotequalnp",
+        "repo": "chrome-dark",
+        "rev": "fef9de34cb5c415843e94c5cf1cc1301d8d55f46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pnotequalnp",
+        "repo": "chrome-dark",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -54,6 +69,7 @@
     },
     "root": {
       "inputs": {
+        "chrome-dark": "chrome-dark",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"
