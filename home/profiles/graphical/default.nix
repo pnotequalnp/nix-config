@@ -15,11 +15,13 @@
       bitwarden
       discord
       gimp
+      google-chrome-dark
       inkscape
       mpv
       pavucontrol
       slack
       sxiv
+      zoom-us
     ];
 
     home.sessionVariables = {
