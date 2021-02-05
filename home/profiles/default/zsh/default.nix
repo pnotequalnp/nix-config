@@ -21,7 +21,7 @@ in {
   history = {
     expireDuplicatesFirst = true;
     extended              = true;
-    path                  = ".local/share/zsh/history";
+    path                  = "\$XDG_DATA_HOME/zsh/history";
   };
 
   plugins      = import ./plugins.nix { inherit pkgs; };

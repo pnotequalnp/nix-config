@@ -13,12 +13,12 @@
 
     home.packages = with pkgs; [
       bitwarden
-      discord
+      # discord
       gimp
       inkscape
       mpv
       pavucontrol
-      slack
+      # slack
       sxiv
     ];
 

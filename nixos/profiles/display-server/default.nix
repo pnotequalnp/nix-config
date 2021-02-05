@@ -17,6 +17,11 @@
       layout = "us";
       libinput = {
         enable = true;
+        mouse = {
+          naturalScrolling = true;
+          tapping = false;
+          accelProfile = "flat";
+        };
         touchpad = {
           naturalScrolling = true;
           tapping = false;
