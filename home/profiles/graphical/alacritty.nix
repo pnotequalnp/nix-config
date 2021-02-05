@@ -1,6 +1,8 @@
 {
   enable = true;
   settings = {
+    env.TERM = "xterm-256color";
+
     font = {
       size = 7.5;
       normal.family = "Iosevka Nerd Font";
