@@ -32,8 +32,6 @@
     '';
   };
 
-  # nixpkgs.config.allowUnfree = true;
-
   services = {
     upower.enable = true;
     blueman.enable = true;

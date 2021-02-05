@@ -9,6 +9,8 @@
       ../profiles
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   profiles = {
     emacs.enable           = true;
     graphical.enable       = true;
