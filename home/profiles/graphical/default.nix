@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.profiles.graphical.enable {
     programs.alacritty = import ./alacritty.nix;
-    programs.chromium = import ./chromium.nix;
+    programs.chromium = import ./chromium.nix // { package = pkgs.chromium-dark; };
     programs.firefox = import ./firefox.nix;
     programs.zathura = import ./zathura.nix;
 
