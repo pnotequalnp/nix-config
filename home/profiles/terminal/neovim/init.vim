@@ -35,6 +35,8 @@ set sidescrolloff=1
 
 set hidden autoread
 
+set clipboard+=unnamedplus
+
 filetype indent plugin on
 
 let g:loaded_netrwPlugin=1

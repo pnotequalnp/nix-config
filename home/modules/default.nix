@@ -1,10 +1,4 @@
 {
-  imports = [
-    ./background-image
-    ./exa
-    ./neofetch
-    ./xmodmap
-    ./zathura
-  ];
+  imports =
+    [ ./background-image ./exa ./neofetch ./starship ./xmodmap ./zathura ];
 }
-

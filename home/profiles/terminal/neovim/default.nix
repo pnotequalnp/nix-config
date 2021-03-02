@@ -2,6 +2,7 @@
 
 {
   enable = true;
+  package = pkgs.neovim;
   extraConfig = lib.readFile ./init.vim; # + ''
   #   if !exists('g:vscode')
   #     luafile ${./init.lua}
@@ -11,6 +12,7 @@
   plugins = with pkgs.vimPlugins; [
     # completion-nvim
     # diagnostic-nvim
+    fugitive
     fzf-vim
     indentLine
     # haskell-vim

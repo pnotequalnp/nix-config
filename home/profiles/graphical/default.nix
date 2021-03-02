@@ -23,6 +23,7 @@
       pavucontrol
       slack
       sxiv
+      thunderbird
       zoom-us
     ];
 

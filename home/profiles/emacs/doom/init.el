@@ -124,7 +124,7 @@
        (org)
        (purescript +lsp)
        (python +lsp +pyright)
-       (rust)
+       (rust +lsp)
        (sh)
        (web)
        (yaml)
