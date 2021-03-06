@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.profiles.development.latex.enable {
-    home.packages = [ pkgs.texlive.combined.scheme-full ];
+    home.packages = with pkgs; [ texlab texlive.combined.scheme-full ];
 
     xdg.configFile."latexmk/latexmkrc".text =
       ''push @generated_exts, "synctex.gz";'';
