@@ -15,7 +15,6 @@
   extraConfig = {
     pull = {
       ff = "only";
-      rebase = true;
     };
     init.defaultBranch = "main";
     github.user = "pnotequalnp";

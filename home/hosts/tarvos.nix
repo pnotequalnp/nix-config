@@ -22,6 +22,7 @@
       haskell.enable = true;
       java.enable = true;
       latex.enable = true;
+      rust.enable = true;
     };
   };
 }

@@ -5,5 +5,6 @@
     ./haskell
     ./java
     ./latex
+    ./rust
   ];
 }

@@ -4,14 +4,9 @@
   networking.hostName = "tarvos";
   system.stateVersion = "20.03";
 
-  imports = [
-    ../../profiles
-    ./hardware-configuration.nix
-  ];
+  imports = [ ../../profiles ./persist.nix ./hardware-configuration.nix ];
 
-  profiles = {
-    display-server.enable = true;
-  };
+  profiles = { display-server.enable = true; };
 
   networking = {
     interfaces.enp0s31f6.useDHCP = true;

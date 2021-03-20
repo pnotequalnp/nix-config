@@ -35,7 +35,12 @@
     upower.enable = true;
     blueman.enable = true;
     dbus.packages = [ pkgs.gnome3.dconf ];
+    pcscd.enable = true;
   };
+
+  security.sudo.extraConfig = ''
+    Defaults lecture = never
+  '';
 
   environment.pathsToLink = [ "/share/zsh" ];
 

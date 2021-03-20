@@ -55,7 +55,7 @@
 
 (after! rainbow-delimiters (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(setq +format-on-save-enabled-modes (list 'haskell-mode 'c++-mode 'nix-mode))
+(setq +format-on-save-enabled-modes nil)
 
 (setq lsp-clients-clangd-args '("-j=3"
                                 "--background-index"

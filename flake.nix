@@ -63,27 +63,13 @@
           extraArgs = { inherit nixpkgs; };
         };
       };
-    };
 
-    nixosConfigurations = {
-      tarvos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./nixos/hosts/tarvos
-          nixpkgs.nixosModules.notDetected
-          nixos-hardware.nixosModules.lenovo-thinkpad-t490
-        ];
-      };
-    };
-
-    devShell.x86_64-linux =
-      let
+      devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
         xmonadPkgs = import ./home/profiles/x11-environment/xmonad/packages.nix;
       in pkgs.mkShell {
-        buildInputs = with pkgs; [
-          (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
-        ];
+        buildInputs = with pkgs;
+          [ (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs) ];
       };
-  };
+    };
 }

@@ -60,7 +60,8 @@ in {
 
     "module/bluetooth" = {
       type = "custom/script";
-      exec = "${bluetoothMonitor}/bin/bluetoothMonitor ${colors.foreground-alt}";
+      exec =
+        "${bluetoothMonitor}/bin/bluetoothMonitor ${colors.foreground-alt}";
       interval = 1;
     };
 
@@ -142,7 +143,8 @@ in {
       thermal-zone = 5;
       warn-temperature = 60;
       units = false;
-      hwmon-path = "/sys/devices/virtual/thermal/thermal_zone5/hwmon2/temp1_input";
+      hwmon-path =
+        "/sys/devices/virtual/thermal/thermal_zone5/hwmon3/temp1_input";
       format = "<label>";
       format-warn = "<label-warn>";
       label = "%temperature-c%";
