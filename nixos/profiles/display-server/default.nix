@@ -39,15 +39,7 @@
         EndSection
       '';
 
-      displayManager = {
-        lightdm.greeters.mini = {
-          enable = true;
-          user = "kevin";
-          extraConfig = lib.readFile ./lightdm-mini-greeter.conf;
-        };
-      };
-
-      windowManager.i3.enable = true; # HACK
+      windowManager.xmonad.enable = true;
     };
   };
 }
