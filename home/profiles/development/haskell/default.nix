@@ -12,6 +12,7 @@
         ghc = ghcWithHoogle ps;
       in [
         cabal-install
+        cabal-fmt
         ghc
         haskell-language-server
       ];
