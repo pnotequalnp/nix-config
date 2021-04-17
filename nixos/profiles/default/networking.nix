@@ -12,6 +12,6 @@
       passwordAuthentication = false;
     };
 
-    zerotierone.enable = true;
+    tailscale.enable = true;
   };
 }
