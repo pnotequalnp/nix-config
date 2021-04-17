@@ -22,7 +22,7 @@
   (exec-path-from-shell-initialize))
 
 (setq user-full-name "Kevin Mullins"
-      user-mail-address "46154511+pnotequalnp@users.noreply.github.com")
+      user-mail-address "kevin@pnotequalnp.com")
 
 (setq doom-theme 'doom-one)
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 16))
