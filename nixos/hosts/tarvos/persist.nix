@@ -38,7 +38,7 @@
       '';
     in {
       snapshotInterval = "daily";
-      cleanupInterval = "weekly";
+      cleanupInterval = "daily";
       configs = {
         home = {
           subvolume = "/home";
@@ -71,6 +71,6 @@
     "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
     "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
-    "L /var/lib/zerotier-one - - - - /persist/var/lib/zerotier-one"
+    "L /var/lib/tailscale - - - - /persist/var/lib/tailscale"
   ];
 }
