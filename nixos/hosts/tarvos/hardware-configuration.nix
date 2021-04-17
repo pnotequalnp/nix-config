@@ -8,6 +8,7 @@ in {
   boot = {
     extraModulePackages = [ ];
     kernelModules = [ "kvm-intel" ];
+    supportedFilesystems = [ "btrfs" "zfs" ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "sdhci_pci" ];
       kernelModules = [ ];
