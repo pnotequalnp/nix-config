@@ -16,11 +16,13 @@
     home.packages = with pkgs; [
       bitwarden
       discord
+      element-desktop
       gimp
       google-chrome-dark
       inkscape
       mpv
       pavucontrol
+      signal-desktop
       slack
       sxiv
       thunderbird
