@@ -24,6 +24,7 @@
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
+      warn-dirty = false
       experimental-features = nix-command flakes ca-references
     '';
     registry.nixpkgs.flake = nixpkgs;
