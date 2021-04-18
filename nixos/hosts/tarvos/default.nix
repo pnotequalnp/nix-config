@@ -22,11 +22,11 @@
 
   services.openssh = {
     hostKeys = [{
-      path = config.sops.secrets.tarvos_ssh_host_ed25519_key.path;
+      path = config.sops.secrets."tarvos.ssh_host_ed25519_key".path;
       type = "ed25519";
     }];
     extraConfig = "HostCertificate ${
-        config.sops.secrets."tarvos_ssh_host_ed25519_key-cert.pub".path
+        config.sops.secrets."tarvos.ssh_host_ed25519_key-cert.pub".path
       }";
   };
 

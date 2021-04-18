@@ -54,4 +54,9 @@
 
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
+
+  sops = {
+    gnupgHome = "/var/lib/sops";
+    sshKeyPaths = [ ];
+  };
 }

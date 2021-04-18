@@ -6,6 +6,8 @@
     useDHCP = false;
   };
 
+  security.pki.certificateFiles = [ ../../../certs/saturn.crt.pem ];
+
   services = {
     openssh = {
       enable = true;
