@@ -71,6 +71,7 @@
     "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
     "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
+    "L /var/lib/sops - - - - /persist/var/lib/sops"
     "L /var/lib/tailscale - - - - /persist/var/lib/tailscale"
   ];
 }

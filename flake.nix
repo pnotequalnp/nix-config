@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,8 +33,8 @@
     chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
-  outputs = { self, nixpkgs, nur, nixos-hardware, home-manager, nix-doom-emacs
-    , neovim, chrome-dark }:
+  outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, home-manager
+    , nix-doom-emacs, neovim, chrome-dark }:
     let
       lib = nixpkgs.lib;
       overlays = [ chrome-dark.overlay nur.overlay neovim.overlay ];
@@ -59,6 +64,7 @@
             ./nixos/hosts/tarvos
             nixpkgs.nixosModules.notDetected
             nixos-hardware.nixosModules.lenovo-thinkpad-t490
+            sops-nix.nixosModules.sops
           ];
           extraArgs = { inherit nixpkgs; };
         };
@@ -68,8 +74,11 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
         xmonadPkgs = import ./home/profiles/x11-environment/xmonad/packages.nix;
       in pkgs.mkShell {
+        sopsPGPKeyDirs = [ "./keys/hosts" "./keys/users"  ];
+        nativeBuildInputs =
+          [ (pkgs.callPackage sops-nix { }).sops-pgp-hook ];
         buildInputs = with pkgs;
-          [ (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs) ];
+          [ (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs) sops ];
       };
     };
 }
