@@ -20,6 +20,7 @@
       };
       c.enable = true;
       haskell.enable = true;
+      idris.enable = true;
       java.enable = true;
       latex.enable = true;
       rust.enable = true;
