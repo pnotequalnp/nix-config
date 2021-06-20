@@ -52,6 +52,13 @@ in {
         options = btrfsOptions "log";
         neededForBoot = true;
       };
+
+    "/var/lib/tailscale" =
+      { device = "/dev/disk/by-uuid/7047afb5-2e26-4405-8c11-ae7f40fde54d";
+        fsType = "btrfs";
+        options = btrfsOptions "tailscale";
+        neededForBoot = true;
+      };
   };
 
   swapDevices = [ ];
