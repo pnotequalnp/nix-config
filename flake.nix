@@ -81,11 +81,12 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
         xmonadPkgs = import ./home/profiles/x11-environment/xmonad/packages.nix;
       in pkgs.mkShell {
-        sopsPGPKeyDirs = [ "./keys/hosts" "./keys/users"  ];
-        nativeBuildInputs =
-          [ (pkgs.callPackage sops-nix { }).sops-pgp-hook ];
-        buildInputs = with pkgs;
-          [ (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs) sops ];
+        sopsPGPKeyDirs = [ "./keys" ];
+        nativeBuildInputs = [ (pkgs.callPackage sops-nix { }).sops-pgp-hook ];
+        buildInputs = with pkgs; [
+          (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
+          sops
+        ];
       };
     };
 }
