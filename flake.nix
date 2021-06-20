@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kmonad = {
+      url = "github:pnotequalnp/kmonad/flake?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,8 +38,8 @@
     chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
-  outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, home-manager
     , nix-doom-emacs, neovim, chrome-dark }:
+  outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
     let
       lib = nixpkgs.lib;
       overlays = [ chrome-dark.overlay nur.overlay neovim.overlay ];
@@ -61,10 +66,12 @@
         tarvos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            (_: { nixpkgs.overlays = [ kmonad.overlay ]; })
             ./nixos/hosts/tarvos
             nixpkgs.nixosModules.notDetected
             nixos-hardware.nixosModules.lenovo-thinkpad-t490
             sops-nix.nixosModules.sops
+            kmonad.nixosModule
           ];
           extraArgs = { inherit nixpkgs; };
         };

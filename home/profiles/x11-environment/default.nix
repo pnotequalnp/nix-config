@@ -17,7 +17,6 @@
       };
 
       background-image = ./background-image.png;
-      xmodmap          = lib.readFile ./xmodmap;
     };
 
     services.picom     = import ./picom.nix;

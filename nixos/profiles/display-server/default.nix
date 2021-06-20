@@ -41,5 +41,10 @@
 
       windowManager.xmonad.enable = true;
     };
+
+    services.kmonad = {
+      enable = true;
+      configfiles = [ ./keyboard/main.kbd ];
+    };
   };
 }
