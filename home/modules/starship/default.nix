@@ -11,12 +11,11 @@ in {
       conda.symbol = lib.mkDefault " ";
       dart.symbol = lib.mkDefault " ";
       directory.read_only = lib.mkDefault " ";
-      docker.symbol = lib.mkDefault " ";
+      docker_context.symbol = lib.mkDefault " ";
       elixir.symbol = lib.mkDefault " ";
       elm.symbol = lib.mkDefault " ";
       git_branch.symbol = lib.mkDefault " ";
       golang.symbol = lib.mkDefault " ";
-      haskell.symbol = lib.mkDefault " ";
       hg_branch.symbol = lib.mkDefault " ";
       java.symbol = lib.mkDefault " ";
       julia.symbol = lib.mkDefault " ";
