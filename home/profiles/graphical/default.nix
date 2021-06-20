@@ -14,6 +14,7 @@
     programs.zathura = import ./zathura.nix;
 
     home.packages = with pkgs; [
+      audacity
       bitwarden
       discord
       element-desktop
