@@ -17,6 +17,7 @@
         publicKeyFile = ../../../certs/saturn.pub;
         certAuthority = true;
       };
+      extraConfig = "TrustedUserCAKeys ${../../../certs/saturn.pub}";
     };
 
     tailscale.enable = true;
