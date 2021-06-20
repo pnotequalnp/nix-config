@@ -11,7 +11,6 @@
     programs.fzf.enable = true;
 
     programs.git = import ./git.nix;
-    programs.htop = import ./htop.nix;
     programs.neovim = import ./neovim { inherit lib pkgs; };
     programs.tmux = import ./tmux.nix { inherit lib pkgs; };
 
@@ -28,6 +27,7 @@
 
     home.packages = with pkgs; [
       bitwarden-cli
+      bottom
       brightnessctl
       dnsutils
       fd
