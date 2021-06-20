@@ -31,6 +31,7 @@
       brightnessctl
       dnsutils
       fd
+      file
       gitAndTools.gh
       gitAndTools.git-ignore
       jq
