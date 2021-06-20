@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.profiles.development.base.enable {
-    home.packages = with pkgs; [ binutils docker-compose scc ];
+    home.packages = with pkgs; [ binutils docker-compose insomnia scc ];
 
     inherit (lib.mkIf config.profiles.development.base.gui {
       home.packages = with pkgs; [ insomnia ];
