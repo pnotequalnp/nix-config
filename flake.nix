@@ -92,6 +92,10 @@
           system = "x86_64-linux";
           modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
         }
+        {
+          host = "aegaeon";
+          system = "x86_64-linux";
+        }
       ]);
 
       devShell.x86_64-linux = let
