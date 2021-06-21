@@ -8,6 +8,7 @@
   config = lib.mkIf config.profiles.emacs.enable {
     programs.doom-emacs = {
       enable = true;
+      package = pkgs.emacsGcc;
       doomPrivateDir = ./doom;
     };
 

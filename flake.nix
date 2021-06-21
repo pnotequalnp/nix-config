@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-doom-emacs = {
       url = "github:vlaci/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,11 +43,11 @@
     chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
-    , nix-doom-emacs, neovim, chrome-dark }:
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
+    , emacs-overlay, nix-doom-emacs, neovim, chrome-dark }:
     let
       lib = nixpkgs.lib;
-      overlays = [ chrome-dark.overlay nur.overlay neovim.overlay ];
+      overlays = [ chrome-dark.overlay emacs-overlay.overlay nur.overlay neovim.overlay ];
       homeConfig = host: {
         name = host;
         value = home-manager.lib.homeManagerConfiguration {
@@ -54,6 +59,7 @@
             imports = [
               (./home/hosts + ("/" + host + ".nix"))
               nix-doom-emacs.hmModule
+              emacs-overlay.overlay
             ];
           };
         };
