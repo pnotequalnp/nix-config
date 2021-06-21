@@ -59,7 +59,6 @@
             imports = [
               (./home/hosts + ("/" + host + ".nix"))
               nix-doom-emacs.hmModule
-              emacs-overlay.overlay
             ];
           };
         };
