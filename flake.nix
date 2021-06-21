@@ -47,7 +47,12 @@
     , emacs-overlay, nix-doom-emacs, neovim, chrome-dark }:
     let
       lib = nixpkgs.lib;
-      overlays = [ chrome-dark.overlay emacs-overlay.overlay nur.overlay neovim.overlay ];
+      overlays = [
+        chrome-dark.overlay
+        emacs-overlay.overlay
+        nur.overlay
+        neovim.overlay
+      ];
       homeConfig = host: {
         name = host;
         value = home-manager.lib.homeManagerConfiguration {
@@ -63,16 +68,13 @@
           };
         };
       };
-    in {
-      homeConfigurations =
-        lib.listToAttrs (builtins.map homeConfig [ "tarvos" "minimal" ]);
-
-      nixosConfigurations = {
-        tarvos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+      nixosConfig = { host, system }: {
+        name = host;
+        value = nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [
             (_: { nixpkgs.overlays = [ kmonad.overlay ]; })
-            ./nixos/hosts/tarvos
+            (./nixos/hosts + ("/" + host))
             nixpkgs.nixosModules.notDetected
             nixos-hardware.nixosModules.lenovo-thinkpad-t490
             sops-nix.nixosModules.sops
@@ -81,6 +83,14 @@
           extraArgs = { inherit nixpkgs; };
         };
       };
+    in {
+      homeConfigurations =
+        lib.listToAttrs (builtins.map homeConfig [ "tarvos" "minimal" ]);
+
+      nixosConfigurations = lib.listToAttrs (builtins.map nixosConfig [{
+        host = "tarvos";
+        system = "x86_64-linux";
+      }]);
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
