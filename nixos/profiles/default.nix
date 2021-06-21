@@ -3,5 +3,6 @@
     ./default
     ./display-server
     ./networking
+    ./users
   ];
 }

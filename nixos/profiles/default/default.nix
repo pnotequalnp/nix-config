@@ -1,8 +1,6 @@
 { config, nixpkgs, pkgs, ... }:
 
 {
-  users = import ./users.nix { inherit pkgs; };
-
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

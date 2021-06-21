@@ -13,6 +13,7 @@
   profiles = {
     display-server.enable = true;
     networking.enable = true;
+    users.enable = true;
   };
 
   networking = {
