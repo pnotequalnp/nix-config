@@ -68,7 +68,7 @@
           };
         };
       };
-      nixosConfig = { host, system }: {
+      nixosConfig = { host, system, modules ? [ ] }: {
         name = host;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -76,10 +76,9 @@
             (_: { nixpkgs.overlays = [ kmonad.overlay ]; })
             (./nixos/hosts + ("/" + host))
             nixpkgs.nixosModules.notDetected
-            nixos-hardware.nixosModules.lenovo-thinkpad-t490
             sops-nix.nixosModules.sops
             kmonad.nixosModule
-          ];
+          ] ++ modules;
           extraArgs = { inherit nixpkgs; };
         };
       };
@@ -87,10 +86,13 @@
       homeConfigurations =
         lib.listToAttrs (builtins.map homeConfig [ "tarvos" "minimal" ]);
 
-      nixosConfigurations = lib.listToAttrs (builtins.map nixosConfig [{
-        host = "tarvos";
-        system = "x86_64-linux";
-      }]);
+      nixosConfigurations = lib.listToAttrs (builtins.map nixosConfig [
+        {
+          host = "tarvos";
+          system = "x86_64-linux";
+          modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
+        }
+      ]);
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
