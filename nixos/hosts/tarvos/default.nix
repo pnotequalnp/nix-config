@@ -10,7 +10,10 @@
     ./secrets
   ];
 
-  profiles = { display-server.enable = true; };
+  profiles = {
+    display-server.enable = true;
+    networking.enable = true;
+  };
 
   networking = {
     hostId = "745c9bc3";

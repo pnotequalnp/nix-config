@@ -1,8 +1,6 @@
 { config, nixpkgs, pkgs, ... }:
 
 {
-  imports = [ ./networking.nix ];
-
   users = import ./users.nix { inherit pkgs; };
 
   boot.loader = {
