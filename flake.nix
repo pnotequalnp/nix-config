@@ -2,7 +2,7 @@
   description = "Nix configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "nixpkgs/c0e881852006b132236cbf0301bd1939bb50867e";
     nur.url = "github:nix-community/NUR";
 
     nixos-hardware = {
