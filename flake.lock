@@ -218,11 +218,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1624211200,
-        "narHash": "sha256-R9WpZxdY17hEuBUUzfWOpAxKOzDr2BuPPJO3VHz7jmY=",
+        "lastModified": 1624569048,
+        "narHash": "sha256-TUXDp7AyNcsF+4jWz3325PASHTkXLVM9CRZssSV7RlQ=",
         "owner": "pnotequalnp",
         "repo": "kmonad",
-        "rev": "125ac4ca0cbf3e712554eb957b145d89491da6f2",
+        "rev": "cc924d7009b977b08e079a643a70f6dcf5880d32",
         "type": "github"
       },
       "original": {

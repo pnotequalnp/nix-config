@@ -73,7 +73,6 @@
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            (_: { nixpkgs.overlays = [ kmonad.overlay ]; })
             (./nixos/hosts + ("/" + host))
             nixpkgs.nixosModules.notDetected
             sops-nix.nixosModules.sops
