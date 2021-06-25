@@ -71,7 +71,7 @@ nnoremap <silent> <leader>. :Files<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
 nnoremap <silent> <leader>< :Buffers<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
-nnoremap <silent> <leader>gg :Git<CR>
+nnoremap <silent> <leader>gg :Gedit :<CR>
 nnoremap <silent> <leader>oT :terminal<CR>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>qq :qa<CR>
