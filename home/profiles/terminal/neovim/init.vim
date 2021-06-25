@@ -66,18 +66,21 @@ omap iz :normal Vaz<CR>
 nnoremap <silent> Y y$
 nnoremap <silent> <leader>` <C-^>
 nnoremap <silent> <Esc> <Esc>:nohlsearch<CR>
-nnoremap <silent> <leader><leader> :Files<CR>
+nnoremap <silent> <leader><leader> :GFiles<CR>
+nnoremap <silent> <leader>. :Files<CR>
 nnoremap <silent> <leader>/ :Rg<CR>
 nnoremap <silent> <leader>< :Buffers<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
+nnoremap <silent> <leader>gg :Git<CR>
+nnoremap <silent> <leader>oT :terminal<CR>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>qq :qa<CR>
 nnoremap <silent> <leader>qQ :qa!<CR>
 nnoremap <silent> zx :bd<CR>
 
 nnoremap <silent> <leader>wq <C-w>q
-nnoremap <silent> <leader>wv <C-w>v
-nnoremap <silent> <leader>ws <C-w>s
+nnoremap <silent> <leader>wv <C-w>v<C-w>w
+nnoremap <silent> <leader>ws <C-w>s<C-w>w
 nnoremap <silent> <leader>wh <C-w>h
 nnoremap <silent> <leader>wj <C-w>j
 nnoremap <silent> <leader>wk <C-w>k
