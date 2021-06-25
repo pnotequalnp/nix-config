@@ -36,6 +36,7 @@
       gitAndTools.git-ignore
       jq
       kakoune
+      lynx
       manix
       nix-index
       nix-tree
