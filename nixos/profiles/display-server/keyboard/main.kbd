@@ -21,7 +21,23 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @esc a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl @acc lctl           spc            lmet rmet cmp  rctl
+  @spc @acc lctl           spc            lmet rmet cmp  rctl
+)
+
+(deflayer colemak
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
+  @esc a    r    s    t    d    h    n    e    i    o    '    ret
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  @spc @acc lctl           spc            lmet rmet cmp  rctl
+)
+
+(deflayer special
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    @col _    _    @qwe _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _
 )
 
 (deflayer accents
@@ -71,6 +87,9 @@
   grv (around-next (layer-toggle grave))
   cfx (around-next (layer-toggle circumflex))
   dia (around-next (layer-toggle diaeresis))
+  spc (layer-toggle special)
+  col (layer-switch colemak)
+  qwe (layer-switch qwerty)
 )
 
 #|
