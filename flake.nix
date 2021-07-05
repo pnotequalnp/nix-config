@@ -46,63 +46,53 @@
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
     , emacs-overlay, nix-doom-emacs, neovim, chrome-dark }:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
+      util = import ./util { inherit lib; };
+      hmSettings = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        sharedModules =
+          [ ./user/modules ./user/profiles nix-doom-emacs.hmModule ];
+      };
       overlays = [
         chrome-dark.overlay
         emacs-overlay.overlay
         nur.overlay
         neovim.overlay
       ];
-      homeConfig = host: {
-        name = host;
-        value = home-manager.lib.homeManagerConfiguration {
-          system = "x86_64-linux";
-          homeDirectory = /home/kevin;
-          username = "kevin";
-          configuration = { pkgs, ... }: {
-            nixpkgs.overlays = overlays;
-            imports = [
-              (./home/hosts + ("/" + host + ".nix"))
-              nix-doom-emacs.hmModule
-            ];
-          };
-        };
-      };
-      nixosConfig = { host, system, modules ? [ ] }: {
-        name = host;
-        value = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (./nixos/hosts + ("/" + host))
-            nixpkgs.nixosModules.notDetected
-            sops-nix.nixosModules.sops
-            kmonad.nixosModule
-          ] ++ modules;
-          extraArgs = { inherit nixpkgs; };
-        };
-      };
     in {
-      homeConfigurations =
-        lib.listToAttrs (builtins.map homeConfig [ "tarvos" "minimal" ]);
+      homeModules = import ./user/modules;
 
-      nixosConfigurations = lib.listToAttrs (builtins.map nixosConfig [
-        {
-          host = "tarvos";
-          system = "x86_64-linux";
-          modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
-        }
-        {
-          host = "aegaeon";
-          system = "x86_64-linux";
-        }
-      ]);
+      genHomeConfiguration = lib.genHomeConfig {
+        inherit (hmSettings) sharedModules;
+        buildConfig = home-manager.lib.homeManagerConfiguration;
+        defaultNixpkgs = nixpkgs.legacyPackages;
+        defaultOverlays = overlays;
+      };
+
+      nixosModules = import ./system/modules;
+
+      nixosConfigurations = util.genNixosConfigs {
+        path = ./hosts;
+        extraArgs = {
+          inherit nixpkgs util;
+          hardware = nixos-hardware.nixosModules;
+        };
+        sharedModules = [
+          { nixpkgs.overlays = overlays; }
+          nixpkgs.nixosModules.notDetected
+          home-manager.nixosModules.home-manager
+          { home-manager = hmSettings; }
+          sops-nix.nixosModules.sops
+          kmonad.nixosModule
+          ./system/profiles
+        ];
+      };
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
-        xmonadPkgs = import ./home/profiles/x11-environment/xmonad/packages.nix;
+        xmonadPkgs = import ./user/profiles/x11-environment/xmonad/packages.nix;
       in pkgs.mkShell {
-        sopsPGPKeyDirs = [ "./keys" ];
-        nativeBuildInputs = [ (pkgs.callPackage sops-nix { }).sops-pgp-hook ];
         buildInputs = with pkgs; [
           (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
           sops
