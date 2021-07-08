@@ -2,8 +2,12 @@
   description = "Nix configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/c0e881852006b132236cbf0301bd1939bb50867e";
-    nur.url = "github:nix-community/NUR";
+    nixpkgs.url = "nixpkgs/nixos-21.05";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
@@ -17,11 +21,6 @@
 
     kmonad = {
       url = "github:pnotequalnp/kmonad/flake?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,6 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur.url = "github:nix-community/NUR";
     chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
