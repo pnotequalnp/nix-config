@@ -16,7 +16,7 @@ in {
   history = {
     expireDuplicatesFirst = true;
     extended = true;
-    path = "$XDG_DATA_HOME/zsh/history";
+    path = "${config.xdg.dataHome}/zsh/history";
   };
 
   plugins = import ./plugins.nix { inherit pkgs; };
@@ -26,6 +26,4 @@ in {
     "...." = "../../..";
     "....." = "../../../..";
   };
-
-  envExtra = ". /home/kevin/.nix-profile/etc/profile.d/hm-session-vars.sh";
 }

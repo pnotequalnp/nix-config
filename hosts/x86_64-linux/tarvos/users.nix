@@ -9,6 +9,8 @@
   };
 
   home-manager.users.kevin = {
+    home.stateVersion = "21.05";
+
     profiles = {
       emacs.enable = true;
       graphical.enable = true;
