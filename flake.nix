@@ -3,14 +3,13 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-21.05";
+    nur.url = "github:nix-community/NUR";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    chrome-dark.url = "github:pnotequalnp/chrome-dark";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-21.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,11 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-doom-emacs = {
       url = "github:vlaci/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,9 +32,6 @@
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nur.url = "github:nix-community/NUR";
-    chrome-dark.url = "github:pnotequalnp/chrome-dark";
   };
 
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
