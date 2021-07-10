@@ -7,5 +7,9 @@
 
   profiles = { };
 
+  boot.loader = {
+    systemd-boot.enable = true;
+  };
+
   programs.gnupg.agent.enable = true;
 }

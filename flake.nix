@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     kmonad = {
       url = "github:pnotequalnp/kmonad/flake?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +40,7 @@
   };
 
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
-    , emacs-overlay, nix-doom-emacs, neovim, chrome-dark }:
+    , emacs-overlay, nix-doom-emacs, neovim, chrome-dark, deploy-rs }:
     let
       inherit (nixpkgs) lib;
       util = import ./util { inherit lib; };
@@ -51,19 +56,8 @@
         nur.overlay
         neovim.overlay
       ];
-    in {
-      homeModules = import ./user/modules;
-
-      genHomeConfiguration = lib.genHomeConfig {
-        inherit (hmSettings) sharedModules;
-        buildConfig = home-manager.lib.homeManagerConfiguration;
-        defaultNixpkgs = nixpkgs.legacyPackages;
-        defaultOverlays = overlays;
-      };
-
-      nixosModules = import ./system/modules;
-
-      nixosConfigurations = util.genNixosConfigs {
+      nixosConfs = util.genNixosConfigs {
+        inherit deploy-rs;
         path = ./hosts;
         extraArgs = {
           inherit nixpkgs util;
@@ -76,9 +70,26 @@
           { home-manager = hmSettings; }
           sops-nix.nixosModules.sops
           kmonad.nixosModule
+          ./system/modules
           ./system/profiles
         ];
       };
+    in {
+      inherit (nixosConfs) nixosConfigurations deploy;
+
+      nixosModules = import ./system/modules;
+
+      homeModules = import ./user/modules;
+
+      genHomeConfiguration = util.genHomeConfig {
+        inherit (hmSettings) sharedModules;
+        buildConfig = home-manager.lib.homeManagerConfiguration;
+        defaultNixpkgs = nixpkgs.legacyPackages;
+        defaultOverlays = overlays;
+      };
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
@@ -87,6 +98,7 @@
         buildInputs = with pkgs; [
           (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
           sops
+          deploy-rs.defaultPackage.x86_64-linux
         ];
       };
     };

@@ -25,6 +25,30 @@
     extraConfig = "HostCertificate ${./crypto/ssh_host_ed25519_key-cert.pub}";
   };
 
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
+  services = {
+    upower.enable = true;
+    blueman.enable = true;
+    dbus.packages = [ pkgs.gnome3.dconf ];
+    pcscd.enable = true;
+  };
+
+  sound.enable = true;
+
+  hardware = {
+    pulseaudio.enable = true;
+    bluetooth.enable = true;
+  };
+
+  virtualisation = {
+    docker.enable = true;
+    virtualbox.host.enable = true;
+  };
+
   systemd.services.muteLight = {
     description = "Disable mute light";
     wantedBy = [ "multi-user.target" ];

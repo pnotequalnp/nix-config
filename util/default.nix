@@ -31,7 +31,8 @@ rec {
         format = "binary";
       }) files) // lib.foldr (x: y: x // y) { } dirs;
 
-  genNixosConfigs = { path, sharedModules ? [ ], extraArgs ? { } }:
+  genNixosConfigs = { deploy-rs, path, sharedModules ? [ ], extraArgs ? { }
+    , deployOptions ? { } }:
     let
       systems = readVisibleDirectories path;
       hosts = lib.concatMap (system:
@@ -52,7 +53,20 @@ rec {
             sharedModules
           ];
         });
-    in lib.listToAttrs (builtins.map buildConfig hosts);
+      nixosConfigurations = lib.listToAttrs (builtins.map buildConfig hosts);
+      buildDeployment = { host, ... }:
+        lib.nameValuePair host {
+          hostname = host;
+          profiles.system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos
+              nixosConfigurations."${host}";
+          };
+        };
+      deploy = {
+        nodes = lib.listToAttrs (builtins.map buildDeployment hosts);
+      } // deployOptions;
+    in { inherit nixosConfigurations deploy; };
 
   genHomeConfig =
     { buildConfig, defaultNixpkgs, defaultOverlays ? [ ], sharedModules ? [ ] }:
