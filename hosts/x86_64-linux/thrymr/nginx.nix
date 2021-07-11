@@ -2,11 +2,14 @@
 
 let
   keyFile = "key.tls.pem";
+  domain = "pnotequalnp.com";
+  cert = ./crypto + "/${domain}.cloudflare.crt.pem";
+  key = config.sops.secrets."${keyFile}".path;
   proxyPass = destination: {
     locations."/".proxyPass = destination;
     addSSL = true;
-    sslCertificate = ./crypto/pnotequalnp.com.cloudflare.crt.pem;
-    sslCertificateKey = config.sops.secrets."${keyFile}".path;
+    sslCertificate = cert;
+    sslCertificateKey = key;
   };
 in {
   sops.secrets."${keyFile}" = {
@@ -22,14 +25,14 @@ in {
     recommendedTlsSettings = true;
 
     virtualHosts = {
-      "hello-there.pnotequalnp.com" = {
+      "hello-there.${domain}" = {
         locations."/".return = "200 'Hello there!'";
         forceSSL = true;
-        sslCertificate = ./crypto/pnotequalnp.com.cloudflare.crt.pem;
-        sslCertificateKey = config.sops.secrets."${keyFile}".path;
+        sslCertificate = cert;
+        sslCertificateKey = key;
       };
 
-      "pi.pnotequalnp.com" = proxyPass "https://daphnis";
+      "pi.${domain}" = proxyPass "https://daphnis";
     };
   };
 }
