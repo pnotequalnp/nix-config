@@ -1,8 +1,18 @@
 { config, lib, pkgs, ... }:
 
-{
-  sops.secrets."key.tls.pem".owner = config.users.users.nginx.name;
-  sops.secrets."key.tls.pem".group = config.users.users.nginx.group;
+let
+  keyFile = "key.tls.pem";
+  proxyPass = destination: {
+    locations."/".proxyPass = destination;
+    addSSL = true;
+    sslCertificate = ./crypto/pnotequalnp.com.cloudflare.crt.pem;
+    sslCertificateKey = config.sops.secrets."${keyFile}".path;
+  };
+in {
+  sops.secrets."${keyFile}" = {
+    owner = config.users.users.nginx.name;
+    group = config.users.users.nginx.group;
+  };
 
   services.nginx = {
     enable = true;
@@ -11,11 +21,15 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."hello-there.pnotequalnp.com" = {
-      locations."/".return = "200 'Hello there!'";
-      forceSSL = true;
-      sslCertificate = ./crypto/pnotequalnp.com.cloudflare.crt.pem;
-      sslCertificateKey = config.sops.secrets."key.tls.pem".path;
+    virtualHosts = {
+      "hello-there.pnotequalnp.com" = {
+        locations."/".return = "200 'Hello there!'";
+        forceSSL = true;
+        sslCertificate = ./crypto/pnotequalnp.com.cloudflare.crt.pem;
+        sslCertificateKey = config.sops.secrets."${keyFile}".path;
+      };
+
+      "pi.pnotequalnp.com" = proxyPass "https://daphnis";
     };
   };
 }
