@@ -31,4 +31,12 @@
       };
     };
   };
+
+  users.users.root.shell = pkgs.zsh;
+
+  home-manager.users.root = {
+    home.stateVersion = "21.05";
+
+    profiles.terminal.enable = true;
+  };
 }
