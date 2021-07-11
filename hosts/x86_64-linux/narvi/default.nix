@@ -9,13 +9,7 @@
 
   profiles = { networking.enable = true; };
 
-  boot = {
-    cleanTmpDir = true;
-    kernel.sysctl = {
-      "net.ipv4.ip_forward" = 1;
-      "net.ipv6.conf.all.forwarding" = 1;
-    };
-  };
+  boot.cleanTmpDir = true;
 
   security.sudo.wheelNeedsPassword = false;
 
