@@ -3,7 +3,7 @@
 {
   system.stateVersion = "21.05";
 
-  imports = [ ./hardware.nix ./users.nix ];
+  imports = [ ./hardware.nix ./nginx.nix ./users.nix ];
 
   sops.secrets = util.secretDir null ./secrets;
 
@@ -11,7 +11,7 @@
 
   boot.cleanTmpDir = true;
 
-  networking.firewall.allowedTCPPorts = [ 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   security.sudo.wheelNeedsPassword = false;
 
