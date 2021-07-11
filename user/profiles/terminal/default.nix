@@ -44,6 +44,7 @@
       nix-index
       nix-tree
       nixfmt
+      openssl
       pandoc
       ranger
       ripgrep
