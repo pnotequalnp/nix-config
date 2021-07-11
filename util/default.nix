@@ -80,7 +80,7 @@ rec {
           config = { inherit allowUnfree; };
           overlays = defaultOverlays ++ overlays;
         };
-        imports = extraModules;
+        imports = sharedModules ++ extraModules;
       };
     };
 }
