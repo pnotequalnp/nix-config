@@ -12,9 +12,6 @@
   };
 
   boot.cleanTmpDir = true;
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBVJXYSV6hN7gaEo1KnXq6svCmgK4W92bBQ632CrgbR7 openpgp:0x5DBE95BE"
-  ];
 
   security.sudo.wheelNeedsPassword = false;
 
