@@ -14,6 +14,7 @@
 
   nix = {
     package = pkgs.nixUnstable;
+    trustedUsers = [ "root" "@wheel" ];
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
