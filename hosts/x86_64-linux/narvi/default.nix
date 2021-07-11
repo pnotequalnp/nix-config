@@ -7,11 +7,15 @@
 
   sops.secrets = util.secretDir null ./secrets;
 
-  profiles = {
-    networking.enable = true;
-  };
+  profiles = { networking.enable = true; };
 
-  boot.cleanTmpDir = true;
+  boot = {
+    cleanTmpDir = true;
+    kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
+    };
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
