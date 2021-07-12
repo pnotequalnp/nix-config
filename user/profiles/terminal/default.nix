@@ -50,6 +50,7 @@
       ripgrep
       udiskie
       unzip
+      wget
       zip
     ];
 
