@@ -21,11 +21,11 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  # services.openssh = {
-  #   hostKeys = [{
-  #     path = config.sops.secrets."ssh_host_ed25519_key".path;
-  #     type = "ed25519";
-  #   }];
-  #   extraConfig = "HostCertificate ${./crypto/ssh_host_ed25519_key-cert.pub}";
-  # };
+  services.openssh = {
+    hostKeys = [{
+      path = config.sops.secrets."ssh_host_ed25519_key".path;
+      type = "ed25519";
+    }];
+    extraConfig = "HostCertificate ${./crypto/ssh_host_ed25519_key-cert.pub}";
+  };
 }
