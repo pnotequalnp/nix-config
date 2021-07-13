@@ -3,12 +3,12 @@
 let
   keyFile = "key.tls.pem";
   domain = "pnotequalnp.com";
-  cert = ./crypto + "/${domain}.cloudflare.crt.pem";
+  cfCert = ./crypto + "/${domain}.cloudflare.crt.pem";
   key = config.sops.secrets."${keyFile}".path;
   proxyPass = destination: {
     locations."/".proxyPass = destination;
     addSSL = true;
-    sslCertificate = cert;
+    sslCertificate = cfCert;
     sslCertificateKey = key;
   };
 in {
@@ -25,14 +25,15 @@ in {
     recommendedTlsSettings = true;
 
     virtualHosts = {
-      "hello-there.${domain}" = {
-        locations."/".return = "200 'Hello there!'";
+      "${config.networking.hostName}" = {
         forceSSL = true;
-        sslCertificate = cert;
+        sslCertificate = ./crypto + "/${config.networking.hostName}.saturn.crt.pem";
         sslCertificateKey = key;
       };
 
       "pi.${domain}" = proxyPass "https://daphnis";
+
+      "git.${domain}" = proxyPass "https://narvi/git";
     };
   };
 }
