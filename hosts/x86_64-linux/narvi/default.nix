@@ -3,7 +3,7 @@
 {
   system.stateVersion = "21.05";
 
-  imports = [ ./hardware.nix ./users.nix ];
+  imports = [ ./gitea.nix ./hardware.nix ./nginx.nix ./users.nix ];
 
   sops.secrets = util.secretDir null ./secrets;
 
