@@ -18,10 +18,7 @@
       x11-environment.enable = true;
 
       development = {
-        base = {
-          enable = true;
-          gui = true;
-        };
+        base.enable = true;
         c.enable = true;
         haskell.enable = true;
         idris.enable = true;

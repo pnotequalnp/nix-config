@@ -6,12 +6,14 @@
     gui = lib.mkEnableOption "Basic GUI development tooling";
   };
 
-  config = lib.mkIf config.profiles.development.base.enable {
-    home.packages = with pkgs; [ binutils docker-compose insomnia scc ];
+  config = lib.mkMerge [
+    (lib.mkIf config.profiles.development.base.enable {
+      profiles.development.base.gui = lib.mkDefault config.profiles.graphical.enable;
 
-    inherit (lib.mkIf config.profiles.development.base.gui {
+      home.packages = with pkgs; [ binutils docker-compose scc ];
+    })
+    (lib.mkIf config.profiles.development.base.gui {
       home.packages = with pkgs; [ insomnia ];
     })
-    ;
-  };
+  ];
 }
