@@ -13,15 +13,15 @@ in {
     enable = true;
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
-    recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
     virtualHosts."${config.networking.hostName}" = {
       locations = {
+        "/".return = "200 'Root path'";
         "/hello".return = "200 'Hello there!'";
         "/git".proxyPass = "http://localhost:3000/";
       };
-      forceSSL = true;
+      addSSL = true;
       sslCertificate = ./crypto
         + "/${config.networking.hostName}.saturn.crt.pem";
       sslCertificateKey = config.sops.secrets."${keyFile}".path;

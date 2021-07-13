@@ -3,7 +3,7 @@
 {
   system.stateVersion = "21.05";
 
-  imports = [ ./gitea.nix ./hardware.nix ./nginx.nix ./users.nix ];
+  imports = [ ./gitea.nix ./hardware.nix ./nextcloud.nix ./nginx.nix ./users.nix ];
 
   sops.secrets = util.secretDir null ./secrets;
 
