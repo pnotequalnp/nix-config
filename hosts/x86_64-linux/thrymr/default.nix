@@ -17,8 +17,6 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-
   security.sudo.wheelNeedsPassword = false;
 
   services.openssh = {
