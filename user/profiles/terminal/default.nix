@@ -3,60 +3,67 @@
 {
   options.profiles.terminal = {
     enable = lib.mkEnableOption "Basic CLI and TUI tools";
+    neovim = lib.mkEnableOption "Neovim";
   };
 
-  config = lib.mkIf config.profiles.terminal.enable {
-    programs.bat.enable = true;
-    programs.exa.enable = true;
-    programs.fzf.enable = true;
+  config = lib.mkMerge [
+    (lib.mkIf config.profiles.terminal.enable {
+      profiles.terminal.neovim = lib.mkDefault true;
 
-    programs.git = import ./git.nix;
-    programs.neovim = import ./neovim { inherit lib pkgs; };
-    programs.tmux = import ./tmux.nix { inherit lib pkgs; };
+      programs.bat.enable = true;
+      programs.exa.enable = true;
+      programs.fzf.enable = true;
 
-    programs.direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv = {
+      programs.git = import ./git.nix;
+      programs.tmux = import ./tmux.nix { inherit lib pkgs; };
+
+      programs.direnv = {
         enable = true;
-        enableFlakes = true;
+        enableZshIntegration = true;
+        nix-direnv = {
+          enable = true;
+          enableFlakes = true;
+        };
       };
-    };
 
-    programs.neofetch = {
-      enable = true;
-      config = lib.readFile ./neofetch.conf;
-    };
+      programs.neofetch = {
+        enable = true;
+        config = lib.readFile ./neofetch.conf;
+      };
 
-    home.packages = with pkgs; [
-      bitwarden-cli
-      bottom
-      brightnessctl
-      dnsutils
-      fd
-      file
-      gitAndTools.gh
-      gitAndTools.git-ignore
-      jq
-      kakoune
-      lynx
-      manix
-      nix-index
-      nix-tree
-      nixfmt
-      openssl
-      pandoc
-      ranger
-      ripgrep
-      udiskie
-      unzip
-      wget
-      zip
-    ];
+      home.packages = with pkgs; [
+        bitwarden-cli
+        bottom
+        brightnessctl
+        dnsutils
+        fd
+        file
+        gitAndTools.gh
+        gitAndTools.git-ignore
+        jq
+        kakoune
+        lynx
+        manix
+        nix-index
+        nix-tree
+        nixfmt
+        openssl
+        pandoc
+        ranger
+        ripgrep
+        udiskie
+        unzip
+        wget
+        zip
+      ];
+    })
+    (lib.mkIf config.profiles.terminal.neovim {
+      programs.neovim = import ./neovim { inherit lib pkgs; };
 
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      MANPAGER = "nvim +Man!";
-    };
-  };
+      home.sessionVariables = {
+        EDITOR = "nvim";
+        MANPAGER = "nvim +Man!";
+      };
+    })
+  ];
 }
