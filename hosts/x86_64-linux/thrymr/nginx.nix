@@ -33,9 +33,9 @@ in {
         sslCertificateKey = key;
       };
 
-      "pi.${domain}" = proxyPass "https://daphnis";
-
+      "cloud.${domain}" = proxyPass "https://narvi/cloud";
       "git.${domain}" = proxyPass "https://narvi/git";
+      "pi.${domain}" = proxyPass "https://daphnis";
     };
   };
 }
