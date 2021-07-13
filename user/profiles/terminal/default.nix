@@ -10,10 +10,6 @@
     (lib.mkIf config.profiles.terminal.enable {
       profiles.terminal.neovim = lib.mkDefault true;
 
-      programs.bat.enable = true;
-      programs.exa.enable = true;
-      programs.fzf.enable = true;
-
       programs.git = import ./git.nix;
       programs.tmux = import ./tmux.nix { inherit lib pkgs; };
 

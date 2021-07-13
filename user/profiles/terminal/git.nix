@@ -1,5 +1,4 @@
 {
-  enable = true;
   userName = "Kevin Mullins";
   userEmail = "kevin@pnotequalnp.com";
 

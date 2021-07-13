@@ -2,6 +2,11 @@
 
 {
   programs = {
+    bat.enable = true;
+    exa.enable = true;
+    fzf.enable = true;
+    git.enable = true;
+
     gpg = {
       enable = true;
       settings = {
