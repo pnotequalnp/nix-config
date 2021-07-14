@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  services.nginx.virtualHosts."${config.networking.hostName}".locations."/git".proxyPass =
+    "http://localhost:3000/";
+
   services.gitea = {
     enable = true;
     appName = "Gitea";
