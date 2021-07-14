@@ -11,5 +11,6 @@
     domain = "git.pnotequalnp.com";
     cookieSecure = true;
     disableRegistration = true;
+    settings.ui.DEFAULT_THEME = "arc-green";
   };
 }
