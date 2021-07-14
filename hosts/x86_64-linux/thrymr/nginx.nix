@@ -28,8 +28,10 @@ in {
 
     virtualHosts = {
       "${config.networking.hostName}" = {
+        locations."/".return = "404";
         forceSSL = true;
-        sslCertificate = ./crypto + "/${config.networking.hostName}.saturn.crt.pem";
+        sslCertificate = ./crypto
+          + "/${config.networking.hostName}.saturn.crt.pem";
         sslCertificateKey = key;
       };
 
