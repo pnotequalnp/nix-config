@@ -4,7 +4,7 @@
   users.users.kevin = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" "wireshark" ];
+    extraGroups = [ "wheel" ];
   };
 
   home-manager.users.kevin = {
@@ -12,8 +12,6 @@
 
     profiles.terminal.enable = true;
   };
-
-  users.users.root.shell = pkgs.zsh;
 
   home-manager.users.root = {
     home.stateVersion = "21.05";
