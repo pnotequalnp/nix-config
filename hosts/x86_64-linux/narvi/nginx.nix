@@ -16,7 +16,11 @@ in {
     recommendedTlsSettings = true;
 
     virtualHosts."${config.networking.hostName}" = {
-      locations."/".return = "404";
+      locations = {
+        "/".return = "404";
+        "/.hostname".return = "200 '${config.networking.hostName}'";
+      };
+      default = true;
       addSSL = true;
       sslCertificate = ./crypto
         + "/${config.networking.hostName}.saturn.crt.pem";

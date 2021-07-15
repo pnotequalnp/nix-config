@@ -3,12 +3,11 @@
 let
   keyFile = "key.tls.pem";
   domain = "pnotequalnp.com";
-  cfCert = ./crypto + "/${domain}.cloudflare.crt.pem";
   key = config.sops.secrets."${keyFile}".path;
   proxyPass = destination: {
     locations."/".proxyPass = destination;
     addSSL = true;
-    sslCertificate = cfCert;
+    sslCertificate = ./crypto + "/${domain}.cloudflare.crt.pem";
     sslCertificateKey = key;
   };
 in {
@@ -28,8 +27,12 @@ in {
 
     virtualHosts = {
       "${config.networking.hostName}" = {
-        locations."/".return = "404";
-        forceSSL = true;
+        locations = {
+          "/".return = "404";
+          "/.hostname".return = "200 '${config.networking.hostName}'";
+        };
+        default = true;
+        addSSL = true;
         sslCertificate = ./crypto
           + "/${config.networking.hostName}.saturn.crt.pem";
         sslCertificateKey = key;
