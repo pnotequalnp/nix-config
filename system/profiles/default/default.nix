@@ -10,7 +10,10 @@
     keyMap = "us";
   };
 
-  users.mutableUsers = true;
+  users = {
+    defaultUserShell = pkgs.zsh;
+    mutableUsers = true;
+  };
 
   nix = {
     package = pkgs.nixUnstable;
