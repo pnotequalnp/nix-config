@@ -20,6 +20,7 @@
       development = {
         base.enable = true;
         c.enable = true;
+        dhall.enable = true;
         haskell.enable = true;
         idris.enable = true;
         java.enable = true;
