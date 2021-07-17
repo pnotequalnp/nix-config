@@ -10,6 +10,7 @@
 (package! reason-mode)
 (package! tree-sitter)
 (package! tree-sitter-langs)
+(package! dhall-mode)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
