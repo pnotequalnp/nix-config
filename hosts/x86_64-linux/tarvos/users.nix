@@ -25,6 +25,7 @@
         idris.enable = true;
         java.enable = true;
         latex.enable = true;
+        lean.enable = true;
         rust.enable = true;
       };
     };

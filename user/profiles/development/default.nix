@@ -7,6 +7,7 @@
     ./idris
     ./java
     ./latex
+    ./lean
     ./rust
   ];
 }
