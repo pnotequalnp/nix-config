@@ -15,7 +15,7 @@
       emacs.enable = true;
       graphical.enable = true;
       terminal.enable = true;
-      x11-environment.enable = true;
+      desktop-environment.x11.enable = true;
 
       development = {
         base.enable = true;

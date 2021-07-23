@@ -1,10 +1,10 @@
 {
   imports = [
     ./default
+    ./desktop-environment
     ./development
     ./emacs
     ./graphical
     ./terminal
-    ./x11-environment
   ];
 }
