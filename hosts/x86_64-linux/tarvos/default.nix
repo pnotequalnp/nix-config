@@ -35,15 +35,20 @@
     dbus.packages = [ pkgs.gnome3.dconf ];
     pcscd.enable = true;
     physlock.enable = true;
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+    };
     upower.enable = true;
   };
 
-  sound.enable = true;
+  security.rtkit.enable = true;
 
-  hardware = {
-    pulseaudio.enable = true;
-    bluetooth.enable = true;
-  };
+  hardware.bluetooth.enable = true;
 
   virtualisation = {
     docker.enable = true;
