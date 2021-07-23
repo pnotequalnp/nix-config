@@ -31,10 +31,11 @@
   };
 
   services = {
-    upower.enable = true;
     blueman.enable = true;
     dbus.packages = [ pkgs.gnome3.dconf ];
     pcscd.enable = true;
+    physlock.enable = true;
+    upower.enable = true;
   };
 
   sound.enable = true;
