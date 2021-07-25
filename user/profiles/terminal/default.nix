@@ -36,10 +36,12 @@
         file
         gitAndTools.gh
         gitAndTools.git-ignore
+        graphviz
         jq
         kakoune
         lynx
         manix
+        nix-du
         nix-index
         nix-tree
         nixfmt
