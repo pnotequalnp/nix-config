@@ -19,6 +19,13 @@ in {
     path = "${config.xdg.dataHome}/zsh/history";
   };
 
+  fzf = {
+    pathCompletionCommand =
+      ''${pkgs.fd}/bin/fd --hidden --follow --exclude ".git" . "$1"'';
+    directoryCompletionCommand =
+      ''${pkgs.fd}/bin/fd --type d --hidden --follow --exclude ".git" . "$1"'';
+  };
+
   plugins = import ./plugins.nix { inherit pkgs; };
   shellAliases = import ./aliases.nix;
   shellGlobalAliases = {
