@@ -93,7 +93,7 @@
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
-        xmonadPkgs = import ./user/profiles/x11-environment/xmonad/packages.nix;
+        xmonadPkgs = import ./user/profiles/desktop-environment/x11/xmonad/packages.nix;
       in pkgs.mkShell {
         buildInputs = with pkgs; [
           (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
