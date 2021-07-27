@@ -2,7 +2,6 @@
 
 {
   programs = {
-    autojump.enable = true;
     bat.enable = true;
     exa.enable = true;
     fzf.enable = true;

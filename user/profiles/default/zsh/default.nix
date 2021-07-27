@@ -19,6 +19,12 @@ in {
     path = "${config.xdg.dataHome}/zsh/history";
   };
 
+  dirHashes = {
+    docs = "$HOME/documents";
+    code = "$HOME/documents/code";
+    conf = "$XDG_CONFIG_HOME/nix-config";
+  };
+
   fzf = {
     pathCompletionCommand =
       ''${pkgs.fd}/bin/fd --hidden --follow --exclude ".git" . "$1"'';
