@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let extraFiles = [ ./keybindings.zsh ./settings.zsh ];
+let extraFiles = [ ./functions.zsh ./keybindings.zsh ./settings.zsh ];
 in {
   enable = true;
   dotDir = ".config/zsh";
