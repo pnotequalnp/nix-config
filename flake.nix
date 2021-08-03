@@ -37,10 +37,16 @@
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    thread_master = {
+      url = "github:pnotequalnp/thread_master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
-    , emacs-overlay, nix-doom-emacs, neovim, chrome-dark, deploy-rs }:
+    , emacs-overlay, nix-doom-emacs, neovim, chrome-dark, deploy-rs
+    , thread_master }:
     let
       inherit (nixpkgs) lib;
       util = import ./util { inherit lib; };
@@ -70,6 +76,7 @@
           { home-manager = hmSettings; }
           sops-nix.nixosModules.sops
           kmonad.nixosModule
+          thread_master.nixosModule
           ./system/modules
           ./system/profiles
         ];
@@ -93,7 +100,8 @@
 
       devShell.x86_64-linux = let
         pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
-        xmonadPkgs = import ./user/profiles/desktop-environment/x11/xmonad/packages.nix;
+        xmonadPkgs =
+          import ./user/profiles/desktop-environment/x11/xmonad/packages.nix;
       in pkgs.mkShell {
         buildInputs = with pkgs; [
           (pkgs.haskellPackages.ghcWithHoogle xmonadPkgs)
