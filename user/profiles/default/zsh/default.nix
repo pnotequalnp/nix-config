@@ -22,7 +22,10 @@ in {
   dirHashes = {
     docs = "$HOME/documents";
     code = "$HOME/documents/code";
-    conf = "$XDG_CONFIG_HOME/nix-config";
+    nix = "$XDG_CONFIG_HOME/nix-config";
+    conf = "$XDG_CONFIG_HOME";
+    data = "$XDG_DATA_HOME";
+    cache = "$XDG_CACHE_HOME";
   };
 
   fzf = {
