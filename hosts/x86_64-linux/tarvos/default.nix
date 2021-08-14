@@ -3,7 +3,7 @@
 {
   system.stateVersion = "20.03";
 
-  imports = [ ./hardware.nix ./persist.nix ./users.nix ];
+  imports = [ ./hardware.nix ./haskell.nix ./persist.nix ./users.nix ];
 
   sops.secrets = util.secretDir null ./secrets;
 
