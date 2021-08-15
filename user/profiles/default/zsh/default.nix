@@ -19,13 +19,15 @@ in {
     path = "${config.xdg.dataHome}/zsh/history";
   };
 
-  dirHashes = {
-    docs = "$HOME/documents";
-    code = "$HOME/documents/code";
-    nix = "$XDG_CONFIG_HOME/nix-config";
-    conf = "$XDG_CONFIG_HOME";
-    data = "$XDG_DATA_HOME";
-    cache = "$XDG_CACHE_HOME";
+  dirHashes = rec {
+    cache = config.xdg.cacheHome;
+    code = "${docs}/code";
+    conf = config.xdg.configHome;
+    data = config.xdg.dataHome;
+    docs = config.xdg.userDirs.documents;
+    git = "${docs}/git";
+    nix = "${conf}/nix-config";
+    pics = config.xdg.userDirs.pictures;
   };
 
   fzf = {
