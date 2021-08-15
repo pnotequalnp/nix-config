@@ -125,6 +125,7 @@
        (purescript +lsp)
        (python +lsp +pyright)
        (rust +lsp)
+       (scala +lsp)
        (sh)
        (web)
        (yaml)
@@ -158,7 +159,6 @@
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
