@@ -30,6 +30,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  programs.steam.enable = true;
+
   services = {
     blueman.enable = true;
     dbus.packages = [ pkgs.gnome3.dconf ];

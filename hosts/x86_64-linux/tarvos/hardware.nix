@@ -47,6 +47,8 @@ in {
 
     "/etc/secret.d" = btrfsSubvol "secrets" { };
 
+    "/steam" = btrfsSubvol "steam" { };
+
     "/var/log" = btrfsSubvol "log" { neededForBoot = true; };
 
     "/var/lib/tailscale" = btrfsSubvol "tailscale" { neededForBoot = true; };
