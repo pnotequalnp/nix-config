@@ -40,6 +40,7 @@ in {
 
       "cloud.${domain}" = proxyPass "https://narvi/cloud";
       "git.${domain}" = proxyPass "https://narvi/git";
+      "matrix.${domain}" = proxyPass "https://narvi/matrix";
       "pi.${domain}" = proxyPass "https://daphnis";
     };
   };
