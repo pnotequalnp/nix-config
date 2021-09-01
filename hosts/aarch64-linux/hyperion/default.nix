@@ -5,7 +5,7 @@
 
   imports = [ ./hardware.nix ./users.nix ];
 
-  sops.secrets = util.secretDir null ./secrets;
+  # sops.secrets = util.secretDir null ./secrets;
 
   profiles = { networking.enable = true; };
 
