@@ -1,3 +1,3 @@
 {
-
+  imports = [ ./distributedBuilds.nix ];
 }

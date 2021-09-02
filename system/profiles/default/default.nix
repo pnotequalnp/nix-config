@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, ... }:
+{ config, lib, nixpkgs, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [ acpi curl git tmux vim ];
@@ -17,14 +17,18 @@
 
   nix = {
     package = pkgs.nixUnstable;
+
     trustedUsers = [ "root" "@wheel" ];
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-      warn-dirty = false
-      experimental-features = nix-command flakes ca-references
-    '';
+
     registry.nixpkgs.flake = nixpkgs;
+
+    extraOptions = ''
+      builders-use-substitutes = true
+      experimental-features = nix-command flakes ca-references
+      keep-derivations = true
+      keep-outputs = true
+      warn-dirty = false
+    '';
   };
 
   nixpkgs.config.allowUnfree = true;

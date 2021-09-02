@@ -9,6 +9,10 @@
 
   profiles = {
     display-server.enable = true;
+    distributedBuilds = {
+      enable = true;
+      key = config.sops.secrets."id_ed25519".path;
+    };
     networking.enable = true;
   };
 
