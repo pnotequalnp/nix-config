@@ -120,7 +120,7 @@
        (latex +latexmk +lsp)
        (lean)
        (markdown +grip)
-       (nix +lsp)
+       (nix)
        (org)
        (purescript +lsp)
        (python +lsp +pyright)

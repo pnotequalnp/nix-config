@@ -49,6 +49,7 @@
         pandoc
         ranger
         ripgrep
+        rnix-lsp
         udiskie
         unzip
         wget

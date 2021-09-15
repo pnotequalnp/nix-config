@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rnix-lsp = {
+      url = "github:nix-community/rnix-lsp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     thread_master = {
       url = "github:pnotequalnp/thread_master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +51,7 @@
 
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
     , emacs-overlay, nix-doom-emacs, neovim, chrome-dark, deploy-rs
-    , thread_master }:
+    , thread_master, rnix-lsp }:
     let
       inherit (nixpkgs) lib;
       util = import ./util { inherit lib; };
@@ -61,6 +66,7 @@
         emacs-overlay.overlay
         nur.overlay
         neovim.overlay
+        (final: prev: { rnix-lsp = rnix-lsp.defaultPackage.${prev.system}; })
       ];
       nixosConfs = util.genNixosConfigs {
         inherit deploy-rs;
