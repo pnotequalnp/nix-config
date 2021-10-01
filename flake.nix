@@ -33,6 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    idris2 = {
+      url = "github:claymager/idris2-pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim = {
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +56,7 @@
 
   outputs = { self, nixpkgs, nur, nixos-hardware, sops-nix, kmonad, home-manager
     , emacs-overlay, nix-doom-emacs, neovim, chrome-dark, deploy-rs
-    , thread_master, rnix-lsp }:
+    , thread_master, rnix-lsp, idris2 }:
     let
       inherit (nixpkgs) lib;
       util = import ./util { inherit lib; };
@@ -64,6 +69,7 @@
       overlays = [
         chrome-dark.overlay
         emacs-overlay.overlay
+        idris2.overlay
         nur.overlay
         neovim.overlay
         (final: prev: { rnix-lsp = rnix-lsp.defaultPackage.${prev.system}; })

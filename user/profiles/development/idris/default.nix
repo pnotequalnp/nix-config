@@ -9,6 +9,8 @@
     home.packages = with pkgs; [
       idris
       idris2
-    ];
+    ] ++ (with pkgs.idris2.packages; [
+      lsp
+    ]);
   };
 }

@@ -200,6 +200,21 @@
     },
     "flake-utils": {
       "locked": {
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
         "lastModified": 1629481132,
         "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
         "owner": "numtide",
@@ -213,7 +228,7 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
+    "flake-utils_3": {
       "locked": {
         "lastModified": 1610051610,
         "narHash": "sha256-U9rPz/usA1/Aohhk7Cmc2gBrEEKRzcW4nwPWMPwja4Y=",
@@ -228,7 +243,7 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
+    "flake-utils_4": {
       "locked": {
         "lastModified": 1622445595,
         "narHash": "sha256-m+JRe6Wc5OZ/mKw2bB3+Tl0ZbtyxxxfnAWln8Q5qs+Y=",
@@ -243,7 +258,7 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
+    "flake-utils_5": {
       "locked": {
         "lastModified": 1623875721,
         "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
@@ -258,7 +273,7 @@
         "type": "github"
       }
     },
-    "flake-utils_5": {
+    "flake-utils_6": {
       "locked": {
         "lastModified": 1614513358,
         "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
@@ -294,9 +309,47 @@
         "type": "github"
       }
     },
-    "kmonad": {
+    "idris2": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "idris2-src": "idris2-src",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1631201576,
+        "narHash": "sha256-Zr95edDrY5vZIazWtgCWh4meDrMn11QgsoHAQNXxx4g=",
+        "owner": "claymager",
+        "repo": "idris2-pkgs",
+        "rev": "0079b07480cd4bc81bd6caf9ff5d5dc5457652fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "claymager",
+        "repo": "idris2-pkgs",
+        "type": "github"
+      }
+    },
+    "idris2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1625087514,
+        "narHash": "sha256-ujkB9GVSYoNVKmZaYw6BkEhSNNrg9/g2jiLJeui9ark=",
+        "owner": "idris-lang",
+        "repo": "idris2",
+        "rev": "08fb38b7914de6721ca3d9633fbe0f942effd633",
+        "type": "github"
+      },
+      "original": {
+        "owner": "idris-lang",
+        "repo": "idris2",
+        "type": "github"
+      }
+    },
+    "kmonad": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -381,7 +434,7 @@
     },
     "neovim": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -412,7 +465,7 @@
         "evil-org-mode": "evil-org-mode",
         "evil-quick-diff": "evil-quick-diff",
         "explain-pause-mode": "explain-pause-mode",
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nix-straight": "nix-straight",
         "nixpkgs": [
           "nixpkgs"
@@ -626,6 +679,7 @@
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
+        "idris2": "idris2",
         "kmonad": "kmonad",
         "neovim": "neovim",
         "nix-doom-emacs": "nix-doom-emacs",
@@ -655,7 +709,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": "flake-utils_6",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -696,7 +750,7 @@
     },
     "thread_master": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_5",
         "naersk": "naersk_3",
         "nixpkgs": [
           "nixpkgs"
