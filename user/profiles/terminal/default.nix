@@ -53,6 +53,7 @@
         udiskie
         unzip
         wget
+        xclip
         zip
       ];
     })

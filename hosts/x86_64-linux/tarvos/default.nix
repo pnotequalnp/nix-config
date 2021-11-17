@@ -3,7 +3,7 @@
 {
   system.stateVersion = "20.03";
 
-  imports = [ ./hardware.nix ./haskell.nix ./persist.nix ./users.nix ];
+  imports = [ ./haskell.nix ./hardware.nix ./persist.nix ./users.nix ];
 
   sops.secrets = util.secretDir null ./secrets;
 
@@ -70,4 +70,11 @@
       StandardOutput = "file:/sys/class/leds/platform::mute/brightness";
     };
   };
+
+  services.xserver = {
+    desktopManager.plasma5.enable = true;
+    displayManager.sddm.enable = true;
+  };
+
+  environment.sessionVariables.KDEWM = "${pkgs.i3}/bin/i3";
 }

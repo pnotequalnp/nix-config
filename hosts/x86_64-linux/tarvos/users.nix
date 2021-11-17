@@ -15,7 +15,7 @@
       emacs.enable = true;
       graphical.enable = true;
       terminal.enable = true;
-      desktop-environment.x11.enable = true;
+      desktop-environment.x11.enable = false;
 
       development = {
         base.enable = true;
@@ -28,6 +28,11 @@
         lean.enable = true;
         rust.enable = true;
       };
+    };
+
+    xsession.windowManager.i3 = {
+      enable = true;
+      config = import ../../../user/profiles/desktop-environment/x11/i3.nix { inherit config lib pkgs; };
     };
   };
 
