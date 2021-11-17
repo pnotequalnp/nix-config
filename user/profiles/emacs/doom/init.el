@@ -108,12 +108,13 @@
 
        :lang
        (cc +lsp)
+       (clojure +lsp)
        (data)
        (elixir)
        (emacs-lisp)
        (go +lsp)
        (haskell +lsp)
-       (idris)
+       ; (idris)
        (java +lsp)
        (javascript +lsp)
        (json)
@@ -130,7 +131,6 @@
        (web)
        (yaml)
        ;;agda              ; types of types of types of types...
-       ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
