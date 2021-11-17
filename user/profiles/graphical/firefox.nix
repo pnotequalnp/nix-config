@@ -27,6 +27,15 @@ addons:
       "browser.uidensity" = 1;
       "devtools.theme" = "dark";
       "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      "browser.tabs.opentabfor.middleclick" = false;
+      "browser.link.open_newwindow" = 2;
     };
+
+    userChrome = ''
+      #TabsToolbar {
+        display: none !important;
+      }
+    '';
   };
 }
