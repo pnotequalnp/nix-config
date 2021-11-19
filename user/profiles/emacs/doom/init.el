@@ -20,35 +20,35 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       company             ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       ivy                 ; a search engine for love and life
 
        :ui
+       doom                ; what makes DOOM look the way it does
+       doom-dashboard      ; a nifty splash screen for Emacs
+       doom-quit           ; DOOM quit-message prompts when you quit Emacs
+       emoji               ; 🙂
+       fill-column         ; a `fill-column' indicator
+       hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+       minimap             ; show a map of the code on the side
+       modeline            ; snazzy, Atom-inspired modeline, plus API
+       nav-flash           ; blink cursor line after big motions
+       ophints             ; highlight the region an operation acts on
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       vc-gutter           ; vcs diff in the fringe
+       vi-tilde-fringe     ; fringe tildes to mark beyond EOB
+       workspaces          ; tab emulation, persistence & separate workspaces
        ;;deft              ; notational velocity for Emacs
-       doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (emoji)  ; 🙂
-       fill-column       ; a `fill-column' indicator
-       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        ;;ligatures         ; ligatures and symbols to make your code pretty again
-       ;;minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       ;;nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
-       ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
        ;;treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
-       vc-gutter         ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor
@@ -57,10 +57,8 @@
        (fold)
        (format +onsave)
        (snippets)
-       ;;god               ; run Emacs commands without modifier keys
-       ;;lispy             ; vim for lisp, for people who don't like vim
+       ;;lispy
        ;;multiple-cursors  ; editing in many places at once
-       ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
        ;;word-wrap         ; soft wrapping with language-aware indent
@@ -70,7 +68,7 @@
        (electric)
        (undo)
        (vc)
-       ;;ibuffer         ; interactive buffer management
+       ;;ibuffer           ; interactive buffer management
 
        :term
        (vterm)
@@ -104,17 +102,18 @@
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       tty               ; improve the terminal Emacs experience
+       tty                 ; improve the terminal Emacs experience
 
        :lang
        (cc +lsp)
        (clojure +lsp)
+       (dart +flutter +lsp)
        (data)
        (elixir)
        (emacs-lisp)
        (go +lsp)
        (haskell +lsp)
-       ; (idris)
+       (idris2)
        (java +lsp)
        (javascript +lsp)
        (json)
@@ -128,6 +127,7 @@
        (rust +lsp)
        (scala +lsp)
        (sh)
+       (swift +lsp)
        (web)
        (yaml)
        ;;agda              ; types of types of types of types...
@@ -135,7 +135,6 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;(dart +flutter)   ; paint ui and not much else
        ;;elm               ; care for a cup of TEA?
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
@@ -162,7 +161,6 @@
        ;;scheme            ; a fully conniving family of lisps
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
-       ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
 
        :email

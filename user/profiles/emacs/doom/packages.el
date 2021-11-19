@@ -5,7 +5,6 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
-(package! idris2-mode :recipe (:host github :repo "idris-community/idris2-mode"))
 (package! exec-path-from-shell)
 (package! reason-mode)
 (package! tree-sitter)
